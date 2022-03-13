@@ -4,7 +4,6 @@
 #include <stdlib.h>
 #include <math.h>
 #include <time.h>
-#include <locale.h>
 
 int main(){
 	
@@ -12,8 +11,8 @@ int main(){
 	char opcao;
 	int repeat = 0;
 	comeco:
-	printf("O que voce quer jogar? Selecione o numero da opção desejada.\n"); 
-	printf("1) 3 perguntas \t Desafio de matematica\n");
+	printf("O que voce quer jogar? Selecione o numero da opcao desejada.\n"); 
+	printf("1) 3 perguntas 	\t Desafio de matematica\n");
 	printf("2) Adivinhe o numero \t Deducao e sorte\n");
 	printf("3) Olhos de cobra \t Jogo de azar 1v1\n");
 	printf("4) Sair\n");
@@ -48,7 +47,7 @@ int main(){
 		 else{printf("Voce errou, a alternativa correta era a segunda\n");}
  	
  		int c;
- 		printf("Pergunta 3: Qual a sequencia correta para a tabela fibbonacci até o oitavo digito?:\n");
+ 		printf("Pergunta 3: Qual a sequencia correta para a tabela fibbonacci ate o oitavo digito?:\n");
 		printf("1) 1 1 2 3 5 8 13 21\n");
 		printf("2) 1 2 3 5 8 13 21 34\n");
 		printf("3) 2 3 5 8 13 21 34 55\n");
@@ -71,7 +70,7 @@ int main(){
  	do{
  		int chute, valor, i;
  		srand(time(NULL));
- 		valor = rand() % 1000;
+ 		valor = rand() % 999;++valor;
  		
  		for(i=0;i<5;++i){
  			printf("Chute um valor: ");
@@ -81,7 +80,7 @@ int main(){
 			 else if(chute>valor){printf("Maior que o valor\n");}
 			  else{printf("Voce acertou!\n");break;}
 		 }
-		if(chute !=valor){printf("O valor era %d", valor);}
+		if(chute !=valor){printf("O valor era %d\n", valor);}
 
 	 printf("\nVoce deseja continuar? Se sim aperte 1, se deseja voltar ao menu, aperte qualquer tecla: ");
  	scanf("%d", &repeat);
