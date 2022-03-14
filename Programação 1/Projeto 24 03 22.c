@@ -94,7 +94,7 @@ int main(){
 	case '3':
 	printf("Esse jogo precisa de duas pessoas para jogar, os jogadores competirao entre si para tentar chegar em 50 pontos.\n");
  	do{
- 		int n1, n2,r1=0, n3, n4,r2=0, start, end, j1, j2;
+ 		int n1, n2,r1=0, n3, n4,r2=0, start, end, j1, j2, turno1,turno2;
  		int temp1, temp2;
  		char nome1[50],nome2[50];
  		srand(time(NULL));		
@@ -112,7 +112,7 @@ int main(){
 	temp1 = n1+n2;
 	printf("\nO seu valor total atual eh %d", r1);
 	if(r1 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome1);goto end;}	
-	
+	turno1:
 	printf("\nSe voce deseja rolar de novo, aperte 1: ");
 	scanf("%d", &j1);
 	if(j1 == 1){
@@ -122,6 +122,8 @@ int main(){
 		printf("\n%s, seus novos dados sao: %d e %d",nome1, n1, n2);
 		r1 += n1+n2;
 		printf("\nO seu valor total atual eh %d\n", r1);
+			if(r1 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome1);goto end;}
+		goto turno1;
 	} else if(n1 == 1||n2 == 1){
 		printf("\n%s, seus novos dados sao: %d e %d",nome1, n1, n2);
 		printf("\nDevido ao fato que voce rolou 1, voce perdeu esse turno");
@@ -145,7 +147,7 @@ int main(){
 	temp2 = n3+n4;
 	printf("\nO seu valor total atual eh %d", r2);
 	if(r2 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome2);goto end;}
-
+ 	turno2:
 	printf("\nSe voce deseja rolar de novo, aperte 1: ");
 	scanf("%d", &j2);
 	if(j2 == 1){
@@ -155,7 +157,9 @@ int main(){
 		printf("\n%s, seus novos dados sao: %d e %d",nome2, n3, n4);
 		r2 += n3+n4;
 		printf("\nO seu valor total atual eh %d\n", r2);
-	} else if(n3 == 1 || n4 == 1){
+			if(r1 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome1);goto end;}
+		goto turno2;
+	} else if(n3 == 1 ^ n4 == 1){
 		printf("\n%s, seus novos dados sao: %d e %d",nome2, n3, n4);
 		printf("\nDevido ao fato que voce rolou 1, voce perdeu esse turno");
 		r2 = r2 - temp2;
