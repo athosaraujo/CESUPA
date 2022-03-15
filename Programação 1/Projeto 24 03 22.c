@@ -66,6 +66,7 @@ int main(){
 
 //Adivinhe o numero;
 	case '2':
+	system("cls");
  		printf("Tente adivinhar um numero de 1 a 1000 \n");
  	do{
  		int chute, valor, i;
@@ -92,6 +93,7 @@ int main(){
 
 //olhos de cobra
 	case '3':
+	system("cls");
 	printf("Esse jogo precisa de duas pessoas para jogar, os jogadores competirao entre si para tentar chegar em 50 pontos.\n");
  	do{
  		int n1, n2, n3, n4,r1=0,r2=0, j1, j2, inicio1, inicio2;
