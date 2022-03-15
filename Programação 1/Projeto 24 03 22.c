@@ -94,8 +94,9 @@ int main(){
 	case '3':
 	printf("Esse jogo precisa de duas pessoas para jogar, os jogadores competirao entre si para tentar chegar em 50 pontos.\n");
  	do{
- 		int n1, n2,r1=0, n3, n4,r2=0, start, end, j1, j2, turno1,turno2;
- 		int temp1, temp2;
+ 		int n1, n2, n3, n4,r1=0,r2=0, j1, j2, inicio1, inicio2;
+		int start, end,reroll1, reroll2;
+ 		int temp1 = 0, temp2 = 0;
  		char nome1[50],nome2[50];
  		srand(time(NULL));		
  	printf("Por favor, insira o nome do jogador numero um\n");getchar();gets(nome1);
@@ -103,83 +104,84 @@ int main(){
 	
 	start:
 /* ---------------------------------------------------Jogador 01---------------------------------------------------*/
-
 	n1 = rand() % 5;n2 = rand() % 5;
 	n1 += 1;n2 += 1;
-	
-	printf("\n%s, seus dados sao: %d e %d",nome1, n1, n2);
+	inicio1 = r1;
+	printf("\n%s, seus dados sao %d e %d\n", nome1, n1, n2);
 	r1 += n1+n2;
-	temp1 = n1+n2;
-	printf("\nO seu valor total atual eh %d", r1);
-	if(r1 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome1);goto end;}	
-	turno1:
-	printf("\nSe voce deseja rolar de novo, aperte 1: ");
+	temp1 += n1+n2;	
+	printf("Seu total eh %d\n", r1);
+	if(r1>50){printf("Parabens! Voce ganhou!");goto end;}
+
+	reroll1:
+	printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
 	scanf("%d", &j1);
+	
 	if(j1 == 1){
 		n1 = rand() % 5;n2 = rand() % 5;
-		n1 += 1;n2 += 1;
-		if(n1!=1 && n2!=1){
-		printf("\n%s, seus novos dados sao: %d e %d",nome1, n1, n2);
-		r1 += n1+n2;
-		printf("\nO seu valor total atual eh %d\n", r1);
-			if(r1 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome1);goto end;}
-		goto turno1;
-	} else if(n1 == 1||n2 == 1){
-		printf("\n%s, seus novos dados sao: %d e %d",nome1, n1, n2);
-		printf("\nDevido ao fato que voce rolou 1, voce perdeu esse turno");
-		r1 = r1 - temp1;
-		printf("\nO seu valor total atual eh %d\n", r1);
-	} else if(n1 == 1 && n2 == 1){	
-		printf("\n%s, seus novos dados sao: %d e %d",nome1, n1, n2);
-		printf("\nDevido ao fato que voce rolou olhos de cobra, voce perdeu esse turno e todos seus pontos");
-		r1 = 0;
-		printf("\nO seu valor total atual eh %d\n", r1);
-	}}
+		n1++;n2++;
+		printf("\n%s, seus dados sao %d e %d\n", nome1, n1, n2);
+		if (n1 == 1 ^ n2 == 1){
+			printf("Voce rodou 1, logo voce perdeu seu turno e os pontos acumulados no mesmo\n");
+				r1 = inicio1;	
+				printf("Seu total eh %d\n", r1);
 
-	//Condição de vitória
-	if(r1 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome1);goto end;}
+		} else if (n1 == 1 && n2 == 1){
+			printf("Voce rodou olhos de cobra e perdeu todos seus pontos\n");
+				r1 = 0;
+				printf("Seu total eh %d\n", r1);
+
+		} else { 
+		r1 += n1+n2;
+		printf("Seu total eh %d\n", r1);
+		if(r1>50){printf("Parabens! Voce ganhou!");goto end;
+		}
+		goto reroll1;
+	}}
 /* ---------------------------------------------------Jogador 02---------------------------------------------------*/
-	n3 = rand() % 5;n4 = rand() % 5;		
+	n3 = rand() % 5;n4 = rand() % 5;
 	n3 += 1;n4 += 1;
+	inicio2 = r2;
 	
-	printf("\n%s, seus dados sao: %d e %d",nome2, n3, n4);
+	
+	printf("\n%s, seus dados sao %d e %d\n", nome2, n3, n4);
 	r2 += n3+n4;
-	temp2 = n3+n4;
-	printf("\nO seu valor total atual eh %d", r2);
-	if(r2 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome2);goto end;}
- 	turno2:
-	printf("\nSe voce deseja rolar de novo, aperte 1: ");
+	temp2 += n3+n4;	
+	printf("Seu total eh %d\n", r2);
+	if(r2>50){printf("Parabens! Voce ganhou!");goto end;}
+
+	reroll2:
+	printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
 	scanf("%d", &j2);
+	
 	if(j2 == 1){
 		n3 = rand() % 5;n4 = rand() % 5;
-		n3 += 1;n4 += 1;	
-		if(n3!=1 && n4!=1){
-		printf("\n%s, seus novos dados sao: %d e %d",nome2, n3, n4);
-		r2 += n3+n4;
-		printf("\nO seu valor total atual eh %d\n", r2);
-			if(r1 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome1);goto end;}
-		goto turno2;
-	} else if(n3 == 1 ^ n4 == 1){
-		printf("\n%s, seus novos dados sao: %d e %d",nome2, n3, n4);
-		printf("\nDevido ao fato que voce rolou 1, voce perdeu esse turno");
-		r2 = r2 - temp2;
-		printf("\nO seu valor total atual eh %d\n", r2);
-	} else if (n3 == 1 && n4 == 1){	
-		printf("\n%s, seus novos dados sao: %d e %d",nome2, n3, n4);
-		printf("\nDevido ao fato que voce rolou olhos de cobra, voce perdeu esse turno e todos seus pontos");
-		r2 = 0;
-		printf("\nO seu valor total atual eh %d\n", r2);
-	}}
-	
-	//Condição de vitória
-	if(r2 >= 50){printf("\nParabens %s, voce ganhou o jogo\n\n", nome2);goto end;}
-	goto start;
+		n3++;n4++;
+		printf("\n%s, seus dados sao %d e %d\n", nome2, n3, n4);
+		if (n3 == 1 ^ n4 == 1){
+			printf("Voce rodou 1, logo voce perdeu seu turno e os pontos acumulados no mesmo\n");
+				r2 = inicio2;	
+				printf("Seu total eh %d\n", r2);
 
+		} else if (n3 == 1 && n4 == 1){
+			printf("Voce rodou olhos de cobra e perdeu todos seus pontos\n");
+				r2 = 0;
+				printf("Seu total eh %d\n", r2);
+
+		} else { 
+		r2 += n3+n4;
+		printf("Seu total eh %d\n", r2);
+		if(r2>50){printf("Parabens! Voce ganhou!");goto end;
+		}
+		goto reroll2;
+	}}
+
+	goto start;
 	end:
 	printf("\nVoce deseja continuar? Se sim aperte 1, se deseja voltar ao menu, aperte qualquer tecla: ");
  	scanf("%d", &repeat);
  	}while(repeat == 1);
- 	
+
  	getchar();
 	system("cls");
  	goto comeco;
