@@ -111,7 +111,7 @@ int main(){
 	r1 += n1+n2;
 	temp1 += n1+n2;	
 	printf("Seu total eh %d\n", r1);
-	if(r1>50){printf("Parabens! Voce ganhou!");goto end;}
+	if(r1>=50){printf("Parabens! Voce ganhou!");goto end;}
 
 	reroll1:
 	printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
@@ -134,7 +134,7 @@ int main(){
 		} else { 
 		r1 += n1+n2;
 		printf("Seu total eh %d\n", r1);
-		if(r1>50){printf("Parabens! Voce ganhou!");goto end;
+		if(r1>=50){printf("Parabens! Voce ganhou!");goto end;
 		}
 		goto reroll1;
 	}}
@@ -148,7 +148,7 @@ int main(){
 	r2 += n3+n4;
 	temp2 += n3+n4;	
 	printf("Seu total eh %d\n", r2);
-	if(r2>50){printf("Parabens! Voce ganhou!");goto end;}
+	if(r2>=50){printf("Parabens! Voce ganhou!");goto end;}
 
 	reroll2:
 	printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
@@ -171,7 +171,7 @@ int main(){
 		} else { 
 		r2 += n3+n4;
 		printf("Seu total eh %d\n", r2);
-		if(r2>50){printf("Parabens! Voce ganhou!");goto end;
+		if(r2>=50){printf("Parabens! Voce ganhou!");goto end;
 		}
 		goto reroll2;
 	}}
