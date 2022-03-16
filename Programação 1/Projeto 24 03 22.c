@@ -25,6 +25,7 @@ int main(){
 
 //3 perguntas
 	case '1':
+		system("cls");
  		printf("Por favor, insira o numero da alternativa desejada: \n");
  	do{
  		int a,a1,acerto=0;
