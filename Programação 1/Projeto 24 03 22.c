@@ -7,9 +7,10 @@
 
 int main(){
 	
-	int comeco;
+	int comeco, repeat = 0;
 	char opcao;
-	int repeat = 0;
+	srand(time(NULL));
+	
 	comeco:
 	printf("O que voce quer jogar? Selecione o numero da opcao desejada.\n"); 
 	printf("1) 3 perguntas 	\t Desafio de matematica\n");
@@ -28,32 +29,32 @@ int main(){
  	do{
  		int a,a1,acerto=0;
  		a1:
- 		printf("Pergunta 1: Quanto eh 2+2? :\n");
-	   	printf("1) 4\n");
-	   	printf("2) 16\n");
-	   	printf("3) 22\n");
- 		scanf("%d", &a);
- 		if(a==1){printf("Voce acertou!\n");++acerto;}
-		 else if(a==4){printf("Voce quis dizer 1?\n");goto a1;}
-		  else{printf("Voce errou, a alternativa correta era a primeira\n");}
+			printf("Pergunta 1: Quanto eh 2+2? :\n");
+			printf("1) 4\n");
+			printf("2) 16\n");
+			printf("3) 22\n");
+			scanf("%d", &a);
+			if(a==1){printf("Voce acertou!\n");++acerto;}
+			 else if(a==4){printf("Voce quis dizer 1?\n");goto a1;}
+			  else{printf("Voce errou, a alternativa correta era a primeira\n");}
  	
  		int b;
- 		printf("Pergunta 2: Quanto eh o valor aproxiamdo de pi? :\n");
-		printf("1) 3.14159268\n");
-		printf("2) 3.14159265\n");
-		printf("3) 3.14159263\n");
- 		scanf("%d", &b);
- 		if(b==2){printf("Voce acertou!\n");++acerto;}
-		 else{printf("Voce errou, a alternativa correta era a segunda\n");}
+			printf("Pergunta 2: Quanto eh o valor aproxiamdo de pi? :\n");
+			printf("1) 3.14159268\n");
+			printf("2) 3.14159265\n");
+			printf("3) 3.14159263\n");
+			scanf("%d", &b);
+			if(b==2){printf("Voce acertou!\n");++acerto;}
+			 else{printf("Voce errou, a alternativa correta era a segunda\n");}
  	
  		int c;
- 		printf("Pergunta 3: Qual a sequencia correta para a tabela fibbonacci ate o oitavo digito?:\n");
-		printf("1) 1 1 2 3 5 8 13 21\n");
-		printf("2) 1 2 3 5 8 13 21 34\n");
-		printf("3) 2 3 5 8 13 21 34 55\n");
- 		scanf("%d", &c);
- 		if(c==1){printf("Voce acertou!\n\n");++acerto;}
-		 else{printf("Voce errou, a alternativa correta era a primeira\n\n");}
+			printf("Pergunta 3: Qual a sequencia correta para a tabela fibbonacci ate o oitavo digito?:\n");
+			printf("1) 1 1 2 3 5 8 13 21\n");
+			printf("2) 1 2 3 5 8 13 21 34\n");
+			printf("3) 2 3 5 8 13 21 34 55\n");
+			scanf("%d", &c);
+			if(c==1){printf("Voce acertou!\n\n");++acerto;}
+			 else{printf("Voce errou, a alternativa correta era a primeira\n\n");}
 		 
  	printf("Voce acertou %d perguntas\n", acerto);
 	printf("Voce deseja continuar? Se sim aperte 1, se deseja voltar ao menu, aperte qualquer tecla: ");
@@ -70,7 +71,6 @@ int main(){
  		printf("Tente adivinhar um numero de 1 a 1000 \n");
  	do{
  		int chute, valor, i;
- 		srand(time(NULL));
  		valor = rand() % 999;++valor;
  		
  		for(i=0;i<5;++i){
@@ -98,7 +98,6 @@ int main(){
  	do{
  		int n1, n2, n3, n4,r1=0,r2=0, j1, j2, inicio1, inicio2;
 		int start, end,reroll1, reroll2;
- 		int temp1 = 0, temp2 = 0;
  		char nome1[50],nome2[50];
  		srand(time(NULL));		
  	printf("Por favor, insira o nome do jogador numero um\n");getchar();gets(nome1);
@@ -111,13 +110,13 @@ int main(){
 	inicio1 = r1;
 	printf("\n%s, seus dados sao %d e %d\n", nome1, n1, n2);
 	r1 += n1+n2;
-	temp1 += n1+n2;	
+
 	printf("Seu total eh %d\n", r1);
 	if(r1>=50){printf("Parabens! Voce ganhou!");goto end;}
 
 	reroll1:
-	printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
-	scanf("%d", &j1);
+		printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
+		scanf("%d", &j1);
 	
 	if(j1 == 1){
 		n1 = rand() % 5;n2 = rand() % 5;
@@ -148,13 +147,12 @@ int main(){
 	
 	printf("\n%s, seus dados sao %d e %d\n", nome2, n3, n4);
 	r2 += n3+n4;
-	temp2 += n3+n4;	
 	printf("Seu total eh %d\n", r2);
 	if(r2>=50){printf("Parabens! Voce ganhou!");goto end;}
 
 	reroll2:
-	printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
-	scanf("%d", &j2);
+		printf("Deseja rodar de novo? Se sim, aperte 1, se nao, qualquer tecla: ");
+		scanf("%d", &j2);
 	
 	if(j2 == 1){
 		n3 = rand() % 5;n4 = rand() % 5;
