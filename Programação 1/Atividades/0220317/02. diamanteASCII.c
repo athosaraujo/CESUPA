@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main()
-{
+int main(){
   int n, i, j, inicio;
   inicio:
   printf("Insira a altura do diamante (numeros impares apenas): ");
@@ -19,5 +18,4 @@ int main()
 		for (j = 1; j <= i; j++)
 		printf(" ");
 		for (j = 1 ; j <= 2*(n-i)-1; j++)
-		printf("*");printf("\n");}
-}
+		printf("*");printf("\n");}}
