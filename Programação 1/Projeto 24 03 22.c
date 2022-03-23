@@ -19,7 +19,6 @@ int main(){
 	printf("4) Sair\n");
 	scanf("%c", &opcao);
 	
-	
 	switch(opcao){
 
 
@@ -77,10 +76,10 @@ int main(){
  		for(i=0;i<5;++i){
  			printf("Chute um valor: ");
 			scanf("%d", &chute);
-		 
-		 	if(chute<valor){printf("Menor que o valor\n");}
+		 if(chute>1000 ^ chute<1){printf("Insira um valor valido\n");--i;}
+		 	else if(chute<valor){printf("Menor que o valor\n");}
 			 else if(chute>valor){printf("Maior que o valor\n");}
-			  else{printf("Voce acertou!\n");break;}
+			  	else{printf("Voce acertou!\n");break;}
 		 }
 		if(chute !=valor){printf("O valor era %d\n", valor);}
 
@@ -195,5 +194,5 @@ int main(){
 	printf("Adeus!\n");
 	break;
   	
-	default: printf("Insira uma opcao valida\n"); getchar();goto comeco;
-}}
+	default: printf("Insira uma opcao valida\n");getchar();goto comeco;
+}}                                          
