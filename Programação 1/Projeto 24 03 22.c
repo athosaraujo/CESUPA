@@ -97,12 +97,16 @@ int main(){
 	system("cls");
 	printf("Esse jogo precisa de duas pessoas para jogar, os jogadores competirao entre si para tentar chegar em 50 pontos.\n");
  	do{
- 		int n1, n2, n3, n4,r1=0,r2=0, j1, j2, inicio1, inicio2;
-		int start, end,reroll1, reroll2;
+ 		int n1, n2, n3, n4,r1=0,r2=0, j1, j2, inicio1, inicio2, random;
+		int start, end,reroll1, reroll2, comecoRandom;
  		char nome1[50],nome2[50];
  	printf("Por favor, insira o nome do jogador numero um\n");getchar();gets(nome1);
 	printf("\nPor favor, insira o nome do jogador numero dois\n");gets(nome2);
 	
+	random = rand() % 5;random++;
+	if(random % 2 == 0){printf("\n%s, voce ira primeiro\n", nome2);goto comecoRandom;}
+	
+	printf("\n%s, voce ira primeiro\n", nome1);
 	start:
 /* ---------------------------------------------------Jogador 01---------------------------------------------------*/
 	n1 = rand() % 5;n2 = rand() % 5;
@@ -140,6 +144,7 @@ int main(){
 		goto reroll1;
 	}}
 /* ---------------------------------------------------Jogador 02---------------------------------------------------*/
+	comecoRandom:
 	n3 = rand() % 5;n4 = rand() % 5;
 	n3 += 1;n4 += 1;
 	inicio2 = r2;
