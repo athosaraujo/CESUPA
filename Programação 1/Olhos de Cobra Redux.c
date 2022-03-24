@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-int jogo(int x1,int x2,int res,int ini,char nome[], char j){
+int x1, x2;
+char j;
+int jogo(int res,int ini,char nome[]){
 	int start;
 	x1 = rand()%5;++x1;x2 = rand()%5;++x2;
 	res += x1+x2;
@@ -39,14 +41,14 @@ int jogo(int x1,int x2,int res,int ini,char nome[], char j){
 
 int main(){
 	srand(time(NULL));
-	char nome1[25],nome2[25],escolha;
-	int dado1,dado2,resul1=0,resul2=0,ini1, ini2;
+	char nome1[25],nome2[25];
+	int resul1=0,resul2=0,ini1, ini2;
 	printf("Insira o nome do primeiro jogador: ");gets(nome1);
 	printf("Insira o nome do segundo jogador: ");gets(nome2);
 	do{	
 		ini1=resul1;ini2=resul2;
-		resul1 = jogo(dado1,dado2,resul1,ini1,nome1,escolha);
-		resul2 = jogo(dado1,dado2,resul2,ini2,nome2,escolha);
+		resul1 = jogo(resul1,ini1,nome1);
+		resul2 = jogo(resul2,ini2,nome2);
 	}while(resul1<50 && resul2<50);
 
 	if(resul1>=50)printf("Parabens %s!, voce ganhou!",nome1);
