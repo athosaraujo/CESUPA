@@ -33,24 +33,31 @@ int jogo(int res,int ini,char nome[]){
 			else{
 				res += x1+x2;
 				printf("Seu valor atual e %d\n",res);
-				goto start;
-			}
+				goto start;}
 		default: printf("\n"); break;	
-			
+		
 			}return res;}
-
 int main(){
 	srand(time(NULL));
 	char nome1[25],nome2[25];
-	int resul1=0,resul2=0,ini1, ini2;
+	int resul1=0,resul2=0,ini1, ini2, primeiro;
 	printf("Insira o nome do primeiro jogador: ");gets(nome1);
 	printf("Insira o nome do segundo jogador: ");gets(nome2);
-	do{	
-		ini1=resul1;ini2=resul2;
-		resul1 = jogo(resul1,ini1,nome1);
-		resul2 = jogo(resul2,ini2,nome2);
-	}while(resul1<50 && resul2<50);
+	primeiro = rand()%5;++primeiro;
+	if(primeiro % 2 == 0){
+		printf("%s, voce vai primeiro\n", nome1);
+		do{	
+			ini1=resul1;ini2=resul2;
+			resul1 = jogo(resul1,ini1,nome1);
+			resul2 = jogo(resul2,ini2,nome2);
+		}while(resul1<50 && resul2<50);}
+	else{
+		printf("%s, voce vai primeiro\n", nome2);
+		do{	
+			ini1=resul1;ini2=resul2;
+			resul2 = jogo(resul2,ini2,nome2);			
+			resul1 = jogo(resul1,ini1,nome1);
+		}while(resul1<50 && resul2<50);}
 
 	if(resul1>=50)printf("Parabens %s!, voce ganhou!",nome1);
-	else printf("Parabens %s!, voce ganhou!",nome2);
-	}
+	else printf("Parabens %s!, voce ganhou!",nome2);}
